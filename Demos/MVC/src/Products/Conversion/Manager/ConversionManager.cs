@@ -15,7 +15,7 @@ namespace GroupDocs.Conversion.MVC.Products.Conversion.Manager
             string documentGuid = postedData.guid;
             string filesDirectory = globalConfiguration.GetConversionConfiguration().GetResultDirectory();
             string outputFile = Path.Combine(filesDirectory, Path.GetFileNameWithoutExtension(documentGuid) + "." + postedData.GetDestinationType());
-            string destDocumentType = supportedImageFormats.Contains(Path.GetExtension("." + destinationType)) ? "image" : postedData.GetDestDocumentType();
+            string destDocumentType = supportedImageFormats.Contains(Path.GetExtension("." + destinationType).ToLowerInvariant()) ? "image" : postedData.GetDestDocumentType();
             string fileNameWoExt = Path.GetFileNameWithoutExtension(postedData.guid);
 
             using (Converter converter = new Converter(postedData.guid))
